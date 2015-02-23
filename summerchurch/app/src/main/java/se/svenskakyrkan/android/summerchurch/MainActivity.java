@@ -34,11 +34,11 @@ import se.svenskakyrkan.android.core.place.HttpUrlConnectionPlaceFinder;
 import se.svenskakyrkan.android.core.place.Place;
 import se.svenskakyrkan.android.core.place.PlaceFinder;
 import se.svenskakyrkan.android.core.place.PlaceType;
-import se.svenskakyrkan.android.core.place.SvkPlaceParser;
 
 public class MainActivity extends Activity implements GoogleMap.OnMarkerClickListener {
 
     private static final int SEARCH_RADIUS_METERS = 25000;
+    private static final int MAX_NUMBER_OF_TRIES = 5;
 
     private static final int REQUEST_CODE_RECOVER_PLAY_SERVICES = 1001;
 
@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements GoogleMap.OnMarkerClickLis
     }
 
     protected LocationProvider getLocationProvider() {
-        return new FusedLocationService(this);
+        return new GoogleApiClientLocationProvider(this);
     }
 
     protected PlaceFinder getPlaceFinder() {
@@ -193,7 +193,7 @@ public class MainActivity extends Activity implements GoogleMap.OnMarkerClickLis
             if (location != null) {
                 try {
                     int searchRadius = SEARCH_RADIUS_METERS;
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < MAX_NUMBER_OF_TRIES; i++) {
                         places = placeFinder.find(PlaceType.SUMMER_CHURCH, location.longitude, location.latitude, searchRadius);
                         Log.i(getClass().getSimpleName(), "doInBackground: searchRadius=" + searchRadius + ", places=" + places);
                         if (!places.isEmpty()) {
@@ -212,7 +212,9 @@ public class MainActivity extends Activity implements GoogleMap.OnMarkerClickLis
         protected void onPostExecute(Set<Place> places) {
             Log.i(getClass().getSimpleName(), "onPostExecute: places=" + places);
             MainActivity.this.places = places;
-            if (places != null && !places.isEmpty()) {
+            if (places == null || places.isEmpty()) {
+                Toast.makeText(MainActivity.this, "No results found near your current location", Toast.LENGTH_SHORT).show();
+            } else {
                 LatLngBounds.Builder builder = new LatLngBounds.Builder();
                 for (Place place : places) {
                     LatLng point = new LatLng(place.latitude(), place.longitude());

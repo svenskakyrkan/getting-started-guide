@@ -10,7 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by svkhao on 2015-02-18.
+ * An implementation of the {@link PlaceParser} interface, using the Swedish Church (SvK)
+ * <a href="http://api.svenskakyrkan.se/platser/v3-latest/doc/">places API</a>.
  */
 public class SvkPlaceParser implements PlaceParser {
 

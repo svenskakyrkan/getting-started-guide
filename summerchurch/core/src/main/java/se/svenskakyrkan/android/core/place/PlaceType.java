@@ -1,7 +1,9 @@
 package se.svenskakyrkan.android.core.place;
 
 /**
- * Created by svkhao on 2015-02-10.
+ * Represents different place types from the <a href="http://api.svenskakyrkan.se/platser/v3-latest/doc/placetypes/">places API</a>.
+ *
+ * @author Henrik Arro
  */
 public enum PlaceType {
 
@@ -26,6 +28,11 @@ public enum PlaceType {
         this.searchString = searchString;
     }
 
+    /**
+     * gives the value that should be used for the "is" parameter when searching for this type of place.
+     *
+     * @return the string to use when searching
+     */
     public String searchString() {
         return searchString;
     }

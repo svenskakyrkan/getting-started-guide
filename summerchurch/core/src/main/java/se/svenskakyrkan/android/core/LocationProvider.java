@@ -1,10 +1,17 @@
 package se.svenskakyrkan.android.core;
 
 /**
- * Created by svkhao on 2015-02-12.
+ * Gives a way to find the location of a device.
+ *
+ * @author Henrik Arro
  */
 public interface LocationProvider {
 
+    /**
+     * Gives the current location of the device.
+     *
+     * @return the current location of the device
+     */
     public LatLong currentLocation();
 
 }

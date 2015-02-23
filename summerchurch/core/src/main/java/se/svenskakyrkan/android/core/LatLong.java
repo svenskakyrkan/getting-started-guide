@@ -1,7 +1,10 @@
 package se.svenskakyrkan.android.core;
 
 /**
- * Created by svkhao on 2015-02-12.
+ * An immutable class representing a pair of latitude and longitude coordinates, stored as degrees.
+ * <p>
+ * This class is equivalent to the <code>LatLng</code> class in the Google Maps API, but we do not
+ * want to add a dependency to that API in the pure Java core module.
  */
 public class LatLong {
 
