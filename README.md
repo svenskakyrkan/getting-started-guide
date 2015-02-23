@@ -21,8 +21,7 @@ You probably also want to install Android Studio since it makes development of A
 You can download both the Android SDK and Android Studio here:
 <http://developer.android.com/sdk/index.html>
 
-You also need to have Gradle installed:
-<https://gradle.org/downloads>
+To build from the command line, you also need to have [Gradle](https://gradle.org/downloads) installed. If you import and build the project in Android Studio, it will help you with this.
 
 Make sure the environment variable variable `ANDROID_HOME` is set to the correct value.
 
@@ -49,7 +48,7 @@ If you use Android Studio, you can import the project using `Import Non-Android 
 
 ## Running the demo app
 
-If you have successfully build the app, you can now test it on a real device. First, connect your device to your computer using a USB cable. Then give the command
+When you have successfully built the app, you can now test it on a real device. First, connect your device to your computer using a USB cable. Then give the command
 
     gradle installDebug
 
