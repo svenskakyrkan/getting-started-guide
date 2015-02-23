@@ -37,7 +37,7 @@ public class HttpUrlConnectionPlaceFinder implements PlaceFinder {
      * The default API key to use to authenticate requests to the places API.
      */
     // TODO: Replace this with your own API key.
-    public static final String API_KEY = "b95eeb81-65fe-49db-8029-a85234a2247a";
+    public static final String API_KEY = "REPLACE_ME!";
 
     private static final byte[] BUFFER = new byte[1024];
 
