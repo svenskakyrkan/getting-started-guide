@@ -129,8 +129,6 @@ public class MainActivity extends Activity implements GoogleMap.OnMarkerClickLis
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
         switch (item.getItemId()) {
             case R.id.action_update:
                 findPlaces();
@@ -218,7 +216,7 @@ public class MainActivity extends Activity implements GoogleMap.OnMarkerClickLis
                 LatLngBounds.Builder builder = new LatLngBounds.Builder();
                 for (Place place : places) {
                     LatLng point = new LatLng(place.latitude(), place.longitude());
-                    Marker marker = googleMap.addMarker(new MarkerOptions().position(point).title(place.name()));
+                    googleMap.addMarker(new MarkerOptions().position(point).title(place.name()));
                     builder.include(point);
                 }
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 100));
