@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -16,8 +15,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -33,7 +30,7 @@ import java.util.Set;
 
 import se.svenskakyrkan.android.core.LatLong;
 import se.svenskakyrkan.android.core.LocationProvider;
-import se.svenskakyrkan.android.core.place.HttpClientPlaceFinder;
+import se.svenskakyrkan.android.core.place.HttpUrlConnectionPlaceFinder;
 import se.svenskakyrkan.android.core.place.Place;
 import se.svenskakyrkan.android.core.place.PlaceFinder;
 import se.svenskakyrkan.android.core.place.PlaceType;
@@ -41,10 +38,8 @@ import se.svenskakyrkan.android.core.place.SvkPlaceParser;
 
 public class MainActivity extends Activity implements GoogleMap.OnMarkerClickListener {
 
-    private static final String TEST_PLACE_URL = "http://api-t.svenskakyrkan.se/platser/v3/place";
-    private static final String TEST_API_KEY = "49891762-3778-4c0f-a741-ea831d571269";
-    private static final String PROD_PLACE_URL = "http://api.svenskakyrkan.se/platser/v3/place";
-    private static final String PROD_API_KEY = "7e732415-a239-451a-b08e-d775164f9235";
+    private static final String PLACE_URL = "http://api.svenskakyrkan.se/platser/v3/place";
+    private static final String API_KEY = "b95eeb81-65fe-49db-8029-a85234a2247a";
 
     private static final int SEARCH_RADIUS_METERS = 25000;
 
@@ -84,7 +79,7 @@ public class MainActivity extends Activity implements GoogleMap.OnMarkerClickLis
     }
 
     protected PlaceFinder getPlaceFinder() {
-        return new HttpClientPlaceFinder(TEST_PLACE_URL, TEST_API_KEY, new SvkPlaceParser());
+        return new HttpUrlConnectionPlaceFinder(PLACE_URL, API_KEY, new SvkPlaceParser());
     }
 
     @Override

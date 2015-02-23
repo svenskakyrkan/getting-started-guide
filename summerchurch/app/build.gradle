@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "se.svenskakyrkan.android.sommarkyrkor"
+        applicationId "se.svenskakyrkan.android.summerchurch"
         minSdkVersion 11
         targetSdkVersion 21
         versionCode 1

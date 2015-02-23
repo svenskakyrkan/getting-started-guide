@@ -27,15 +27,15 @@ public class SvkPlaceParser implements PlaceParser {
             JsonArray coordinates = jsonObject.get("Geolocation").getAsJsonObject().get("Coordinates").getAsJsonArray();
             double longitude = coordinates.get(0).getAsDouble();
             double latitude = coordinates.get(1).getAsDouble();
-            String description = "";
             JsonObject placeTypes = jsonObject.getAsJsonObject("PlaceTypes");
-            JsonObject church = placeTypes.getAsJsonObject("Church");
-            if (church != null && church.get("Description") != null) {
-                description = church.get("Description").getAsString();
-            }
-            Place place = new Place(name, description, longitude, latitude);
+            Place place = new Place(name, longitude, latitude);
             JsonObject summerChurch = placeTypes.getAsJsonObject("SummerChurch");
             if (summerChurch != null) {
+                String description = "";
+                if (summerChurch.get("Description") != null) {
+                    description = summerChurch.get("Description").getAsString();
+                }
+                place.setDescription(description);
                 if (summerChurch.get("Cafeteria").getAsBoolean()) {
                     String cafeteriaDescription = "Yes";
                     if (summerChurch.get("CafeteriaDescription") != null) {

@@ -10,15 +10,14 @@ import java.util.UUID;
  */
 public class Place {
     private String name;
-    private String description;
     private double longitude;
     private double latitude;
+    private String description;
     private String cafeteriaDescription;
     private String guideDescription;
 
-    public Place(String name, String description, double longitude, double latitude) {
+    public Place(String name, double longitude, double latitude) {
         this.name = name;
-        this.description = description;
         this.longitude = longitude;
         this.latitude = latitude;
     }
@@ -27,16 +26,20 @@ public class Place {
         return name;
     }
 
-    public String description() {
-        return description;
-    }
-
     public double longitude() {
         return longitude;
     }
 
     public double latitude() {
         return latitude;
+    }
+
+    public String description() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String cafeteriaDescription() {

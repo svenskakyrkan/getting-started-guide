@@ -21,5 +21,9 @@ public class SvkPlaceParserTest {
         Set<Place> places = placeParser.parseFrom(reader);
         Assert.assertNotNull("Places should not be null", places);
         Assert.assertEquals("Wrong number of places found: ", 7, places.size());
+        for (Place place : places) {
+            Assert.assertNotNull("Place description should not be null", place.description());
+            Assert.assertFalse("Place description should not be empty", place.description().isEmpty());
+        }
     }
 }

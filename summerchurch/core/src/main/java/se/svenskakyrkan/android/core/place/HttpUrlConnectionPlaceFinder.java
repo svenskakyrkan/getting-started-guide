@@ -23,7 +23,7 @@ import jdk.nashorn.internal.parser.JSONParser;
 /**
  * Created by svkhao on 2015-02-11.
  */
-public class HttpClientPlaceFinder implements PlaceFinder {
+public class HttpUrlConnectionPlaceFinder implements PlaceFinder {
 
     private static final byte[] BUFFER = new byte[1024];
 
@@ -31,7 +31,7 @@ public class HttpClientPlaceFinder implements PlaceFinder {
     private String apiKey;
     private PlaceParser placeParser;
 
-    public HttpClientPlaceFinder(String baseUrl, String apiKey, PlaceParser placeParser) {
+    public HttpUrlConnectionPlaceFinder(String baseUrl, String apiKey, PlaceParser placeParser) {
         if (baseUrl == null || apiKey == null || placeParser == null) {
             throw new IllegalArgumentException("Arguments must not be null: baseUrl=" + baseUrl
                     + ", apiKey=" + apiKey + ", placeParser=" + placeParser);
