@@ -38,9 +38,6 @@ import se.svenskakyrkan.android.core.place.SvkPlaceParser;
 
 public class MainActivity extends Activity implements GoogleMap.OnMarkerClickListener {
 
-    private static final String PLACE_URL = "http://api.svenskakyrkan.se/platser/v3/place";
-    private static final String API_KEY = "b95eeb81-65fe-49db-8029-a85234a2247a";
-
     private static final int SEARCH_RADIUS_METERS = 25000;
 
     private static final int REQUEST_CODE_RECOVER_PLAY_SERVICES = 1001;
@@ -79,7 +76,7 @@ public class MainActivity extends Activity implements GoogleMap.OnMarkerClickLis
     }
 
     protected PlaceFinder getPlaceFinder() {
-        return new HttpUrlConnectionPlaceFinder(PLACE_URL, API_KEY, new SvkPlaceParser());
+        return HttpUrlConnectionPlaceFinder.createDefault();
     }
 
     @Override

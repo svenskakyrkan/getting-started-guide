@@ -10,13 +10,9 @@ import java.util.Set;
  */
 public class HttpUrlConnectionPlaceFinderTest {
 
-    private static final String API_URL = "http://api.svenskakyrkan.se/platser/v3/place";
-    private static final String API_KEY = "b95eeb81-65fe-49db-8029-a85234a2247a";
-    private PlaceParser placeParser = new SvkPlaceParser();
-
     @Test
     public void find() throws Exception {
-        HttpUrlConnectionPlaceFinder placeFinder = new HttpUrlConnectionPlaceFinder(API_URL, API_KEY, placeParser);
+        HttpUrlConnectionPlaceFinder placeFinder = HttpUrlConnectionPlaceFinder.createDefault();
         Set<Place> places = placeFinder.find(PlaceType.SUMMER_CHURCH, 17.6336, 59.8581, 100);
         Assert.assertNotNull("Places should not be null", places);
         Assert.assertEquals("Wrong number of places found: ", 1, places.size());

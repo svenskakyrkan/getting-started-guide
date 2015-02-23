@@ -25,6 +25,11 @@ import jdk.nashorn.internal.parser.JSONParser;
  */
 public class HttpUrlConnectionPlaceFinder implements PlaceFinder {
 
+    private static final String PLACES_URL = "http://api.svenskakyrkan.se/platser/v3/place";
+
+    // TODO: Replace this with your own API key.
+    private static final String API_KEY = "b95eeb81-65fe-49db-8029-a85234a2247a";
+
     private static final byte[] BUFFER = new byte[1024];
 
     private String baseUrl;
@@ -39,6 +44,10 @@ public class HttpUrlConnectionPlaceFinder implements PlaceFinder {
         this.baseUrl = baseUrl;
         this.apiKey = apiKey;
         this.placeParser = placeParser;
+    }
+
+    public static HttpUrlConnectionPlaceFinder createDefault() {
+        return new HttpUrlConnectionPlaceFinder(PLACES_URL, API_KEY, new SvkPlaceParser());
     }
 
     @Override
