@@ -1,24 +1,12 @@
 package se.svenskakyrkan.android.core.place;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.HashSet;
 import java.util.Set;
-
-import jdk.nashorn.internal.parser.JSONParser;
 
 /**
  * An implementation of the {@link PlaceFinder} interface that uses an <code>HttpUrlConnection</code>

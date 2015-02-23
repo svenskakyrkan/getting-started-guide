@@ -1,8 +1,5 @@
 package se.svenskakyrkan.android.core.place;
 
-import java.util.Set;
-import java.util.UUID;
-
 /**
  * Represents information about a place from the <a href="http://api.svenskakyrkan.se/platser/v3-latest/doc/">places API</a>.
  *
