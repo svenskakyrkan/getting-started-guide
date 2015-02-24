@@ -214,6 +214,10 @@ public class MainActivity extends Activity implements GoogleMap.OnMarkerClickLis
                 Toast.makeText(MainActivity.this, "No results found near your current location", Toast.LENGTH_SHORT).show();
             } else {
                 LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                LatLong currentLocation = locationProvider.currentLocation();
+                if (currentLocation != null) {
+                    builder.include(new LatLng(currentLocation.latitude, currentLocation.longitude));
+                }
                 for (Place place : places) {
                     LatLng point = new LatLng(place.latitude(), place.longitude());
                     googleMap.addMarker(new MarkerOptions().position(point).title(place.name()));
