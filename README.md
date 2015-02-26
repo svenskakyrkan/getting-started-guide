@@ -12,7 +12,7 @@ The first thing you need to do to get access to any of the APIs of the Church of
 2. After you have been logged in to the API portal, go to <https://api.svenskakyrkan.se/a/nycklar> and create a new API key, giving it a name describing what you intend to use it for. You can register several keys.
 3. When you now go to <https://api.svenskakyrkan.se/a/nycklar>, you see a list of your API keys. Each key is in the form of a universally unique identifier, e.g., `123e4567-e89b-12d3-a456-426655440000`. It is this UUID you will use in your calls to the church's APIs.
 
-## Building the demo app
+## Building the Demo App
 
 To build the Summer Churches demo app, you must have the Android SDK installed. You need at least Android 3.0 Honeycomb (API level 11). The same goes for any device you want to use for testing.
 
@@ -21,7 +21,15 @@ You probably also want to install Android Studio since it makes development of A
 You can download both the Android SDK and Android Studio here:
 <http://developer.android.com/sdk/index.html>
 
-To build from the command line, you also need to have [Gradle](https://gradle.org/downloads) installed. If you import and build the project in Android Studio, it will help you with this.
+### Importing the Project in Android Studio ###
+
+The recommended way to import the project in Android Studio is to first clone it from GitHub, and then use `Import project (Eclipse ADT, Gradle, etc.)` in Android Studio. Select the top-level build file `getting-started-guide/summerchurch/build.gradle`. After the import has finished, you should see three modules: `app`, `core`, and `Gradle Scripts`.
+
+### Building the Project ###
+
+The rest of these instructions assume that you build the project from the command line. If you build within Android Studio, you will have to adjust the instructions accordingly.
+
+To build from the command line, you need to have [Gradle](https://gradle.org/downloads) installed.
 
 Make sure the environment variable variable `ANDROID_HOME` is set to the correct value.
 
@@ -43,8 +51,6 @@ Now build the app using Gradle from a command prompt:
     gradle build
 
 The build should end with the text `BUILD SUCCESSFUL`.
-
-If you use Android Studio, you can import the project using `Import Non-Android Studio project`.
 
 ## Running the demo app
 
